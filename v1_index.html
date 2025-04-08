@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E&W Massage Booking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>E&W Center House Massage - 预约系统</h1>
+  <form id="booking-form">
+    <label>日期：<input type="date" name="date" required /></label><br/>
+    <label>时间：<input type="time" name="time" required /></label><br/>
+    <label>时长：
+      <select name="duration">
+        <option>30分钟</option>
+        <option>60分钟</option>
+        <option>90分钟</option>
+      </select>
+    </label><br/>
+    <label>按摩种类：<input type="text" name="type" required /></label><br/>
+    <label>按摩师：<input type="text" name="therapist" /></label><br/>
+    <label>备注：<textarea name="notes"></textarea></label><br/>
+    <button type="submit">提交预约</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
