@@ -6,6 +6,7 @@ document.getElementById("booking-form").addEventListener("submit", function (e) 
   e.preventDefault();
 
   const params = {
+    user_email: document.querySelector("[name='user_email']").value,
     date: document.querySelector("[name='date']").value,
     time: document.querySelector("[name='time']").value,
     duration: document.querySelector("[name='duration']").value,
