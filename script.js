@@ -1,5 +1,5 @@
 (function () {
-  emailjs.init("pgKx0WvrBQwzrCL59"); // 替换为你的 Public Key
+  emailjs.init("pgKx0WvrBQwzrCL59")
 })();
 
 document.getElementById("booking-form").addEventListener("submit", function (e) {
