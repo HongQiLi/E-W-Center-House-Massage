@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+input, select, textarea, button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
