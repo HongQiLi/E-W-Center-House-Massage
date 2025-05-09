@@ -1,6 +1,6 @@
-(function () {
-  emailjs.init("pgKx0WvrBQwzrCL59")
-})();
+import emailjs from 'https://cdn.emailjs.com/dist/email.min.mjs';
+
+emailjs.init("pgKx0WvrBQwzrCL59");
 
 document.getElementById("booking-form").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -17,7 +17,8 @@ document.getElementById("booking-form").addEventListener("submit", function (e) 
   emailjs.send("e&w.centerhouse", "template_p19sg0i", params)
     .then(() => {
       alert("✅ 预约成功，确认邮件已发送！");
-    }, (error) => {
+    })
+    .catch((error) => {
       alert("❌ 邮件发送失败: " + error.text);
     });
 });
