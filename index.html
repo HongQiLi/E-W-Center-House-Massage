@@ -6,7 +6,7 @@
   <title>E&W Center House Massage – Booking</title>
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google Analytics 谷歌流量统计代码 -->
+  <!-- Google Analytics 谷歌统计代码 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXFK54Z9W1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,26 +19,22 @@
 <body>
   <h1>E&W Center House Massage – 预约表单</h1>
 
-  <!-- 表单开始 -->
+  <!-- 表单部分 -->
   <form id="booking-form">
-    <!-- 用户邮箱（用于接收确认邮件） -->
     <label>Email:
-      <input type="email" name="user_email" id="user_email" required />
+      <input type="email" name="user_email" required />
     </label><br/>
 
-    <!-- 日期选择 -->
     <label>Date:
-      <input type="date" name="date" id="date" required />
+      <input type="date" name="date" required />
     </label><br/>
 
-    <!-- 时间选择 -->
     <label>Time:
-      <input type="time" name="time" id="time" required />
+      <input type="time" name="time" required />
     </label><br/>
 
-    <!-- 按摩时长选择 -->
     <label>Duration:
-      <select name="duration" id="duration" required>
+      <select name="duration" required>
         <option value="">-- Select Duration --</option>
         <option value="30">30 minutes</option>
         <option value="60">60 minutes</option>
@@ -46,9 +42,8 @@
       </select>
     </label><br/>
 
-    <!-- 按摩类型选择 -->
     <label>Massage Type:
-      <select name="type" id="type" required>
+      <select name="type" required>
         <option value="">-- Select Type --</option>
         <option value="full body">Full Body</option>
         <option value="deep tissue">Deep Tissue</option>
@@ -56,9 +51,8 @@
       </select>
     </label><br/>
 
-    <!-- 力度选择 -->
     <label>Pressure Level:
-      <select name="pressure" id="pressure">
+      <select name="pressure">
         <option value="">-- Select Pressure --</option>
         <option value="light">Light</option>
         <option value="medium">Medium</option>
@@ -66,15 +60,13 @@
       </select>
     </label><br/>
 
-    <!-- 备注 -->
     <label>Notes:
-      <textarea name="notes" id="notes"></textarea>
+      <textarea name="notes"></textarea>
     </label><br/>
 
-    <!-- 提交按钮 -->
     <button type="submit" id="submitBtn">Submit Booking</button>
   </form>
-  <!-- 表单结束 -->
+
 
   <!-- Google 地图位置展示 -->
     <h2>Find Us on Google Maps</h2>
@@ -91,26 +83,24 @@
     </a>
   </div>
 
+  <!-- 引入 EmailJS 的 Browser SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-  <!-- EmailJS SDK 脚本（通用浏览器版本） -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-  <script>
-    // 初始化 EmailJS（用你的公钥）
+  <!-- 初始化和表单发送逻辑 -->
+  <script type="text/javascript">
+    // 初始化 EmailJS
     (function () {
-      emailjs.init("pgKx0WvrBQwzrCL59");
+      emailjs.init("pgKx0WvrBQwzrCL59"); // 你的 public key
     })();
 
-    // 监听表单提交事件
+    // 提交表单时发送邮件
     document.getElementById("booking-form").addEventListener("submit", function (e) {
-      e.preventDefault(); // 阻止默认提交行为（页面刷新）
+      e.preventDefault();
 
-      // 禁用按钮，防止重复点击
       const submitBtn = document.getElementById("submitBtn");
       submitBtn.disabled = true;
       submitBtn.textContent = "Sending...";
 
-      // 收集表单数据作为参数
       const params = {
         user_email: document.querySelector("[name='user_email']").value,
         date: document.querySelector("[name='date']").value,
@@ -118,27 +108,15 @@
         duration: document.querySelector("[name='duration']").value,
         type: document.querySelector("[name='type']").value,
         pressure: document.querySelector("[name='pressure']").value,
-        notes: document.querySelector("[name='notes']").value,
+        notes: document.querySelector("[name='notes']").value
       };
 
-
-      const params = {
-        user_email: document.querySelector("[name='user_email']").value,
-        date: document.querySelector("[name='date']").value,
-        time: document.querySelector("[name='time']").value,
-        duration: document.querySelector("[name='duration']").value,
-        type: document.querySelector("[name='type']").value,
-        pressure: document.querySelector("[name='pressure']").value,
-        notes: document.querySeletor("[name='notes']").value,
-      };
-
-      // 发送邮件：Service ID + Template ID + 参数
       emailjs.send("e&w.centerhouse", "template_p19sg0i", params)
         .then(() => {
           alert("✅ 预约成功，确认邮件已发送！");
           submitBtn.disabled = false;
           submitBtn.textContent = "Submit Booking";
-          document.getElementById("booking-form").reset(); // 清空表单
+          document.getElementById("booking-form").reset();
         })
         .catch((error) => {
           alert("❌ 邮件发送失败: " + error.text);
