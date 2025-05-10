@@ -14,8 +14,15 @@
     gtag('js', new Date());
     gtag('config', 'G-HXFK54Z9W1');
   </script>
-</head>
 
+  <!-- 引入 EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("pgKx0WvrBQwzrCL59"); // 替换成你的 EmailJS Public Key
+    })();
+  </script>
+</head>
 <body>
   <h1>E&W Center House Massage – 预约表单</h1>
 
@@ -67,8 +74,7 @@
     <button type="submit" id="submitBtn">Submit Booking</button>
   </form>
 
-
-  <!-- Google 地图位置展示 -->
+   <!-- Google 地图位置展示 -->
     <h2>Find Us on Google Maps</h2>
   <div style="text-align:center;">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12220.80366232363!2d-105.26672148554422!3d40.02629344407744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bedda59af9e65%3A0x913b446d2aeabd7a!2sEast%20West%20House%20Center!5e0!3m2!1sen!2sus!4v1743729227086!5m2!1sen!2sus"
@@ -83,17 +89,8 @@
     </a>
   </div>
 
-  <!-- 引入 EmailJS 的 Browser SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-  <!-- 初始化和表单发送逻辑 -->
+  <!-- 表单控制逻辑 -->
   <script type="text/javascript">
-    // 初始化 EmailJS
-    (function () {
-      emailjs.init("pgKx0WvrBQwzrCL59"); // 你的 public key
-    })();
-
-    // 提交表单时发送邮件
     document.getElementById("booking-form").addEventListener("submit", function (e) {
       e.preventDefault();
 
