@@ -110,13 +110,13 @@
 
       emailjs.send("e&w.centerhouse", "template_p19sg0i", params)
         .then(() => {
-          alert("✅ 预约成功，确认邮件已发送！");
+          alert("✅ Booking successful! A confirmation email has been sent.");
           submitBtn.disabled = false;
           submitBtn.textContent = "Submit Booking";
           document.getElementById("booking-form").reset();
         })
         .catch((error) => {
-          alert("❌ 邮件发送失败: " + error.text);
+          alert("❌ Failed to send email:" + error.text);
           submitBtn.disabled = false;
           submitBtn.textContent = "Submit Booking";
         });
